@@ -1,12 +1,9 @@
-# docsify <small>0.5</small>
+# 介绍闭包
 
-> 一个神奇的文档网站生成器。
+## 什么是闭包
 
-- 简单、轻便 (压缩后 ~21kB)
-- 无需生成 html 文件
-- 众多主题
+哈哈哈哈
 
-[GitHub](https://github.com/NAZBIN)
-[Get Started](#main)
+## 闭包的作用是什么
 
-![](_media/lufei.jpg)
+复制代码
