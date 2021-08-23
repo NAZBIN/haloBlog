@@ -13,21 +13,35 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
     />
+    <style>
+      .app-name-link img {
+        max-width: 150%;
+        margin-left: -20%;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="main"></div>
     <script>
       //配置项
       window.$docsify = {
-        name: "",
-        repo: "",
+        el: "#main",
+        name: "斌HaloBlog",
+        repo: "https://github.com/NAZBIN/haloBlog",
+        // logo: "/_media/lusuo.png",
+        coverpage: "coverpage.md", //封面
         loadSidebar: true,
         subMaxLevel: 2, //根据标题生成目录
+        auto2top: true, //切换页面后自动跳转至顶部
+        mergeNavbar: true, //小屏合并导航栏到侧边栏
+        formatUpdated: "{MM}/{DD} {HH}:{mm}",
+        //homepage:'home.md' 适合不想将readme.md作为入口文件渲染。
       };
     </script>
     <!-- Docsify v4 -->
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+    <!-- <script src="https://unpkg.com/docsify-themeable"></script> -->
   </body>
 </html>
