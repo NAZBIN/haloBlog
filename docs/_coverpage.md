@@ -6,7 +6,6 @@
 - 记录成长 记录生活
 - 向上生长
 
-[GitHub](https://github.com/NAZBIN)
-[Get Started](#main)
+[Click Me](README)
 
 ![](_media/lufei.jpg)
