@@ -2,9 +2,9 @@
 
 > Weclome to my Blog
 
-- 前端工程师 (code-age: one month)
+- Career start 2021 の 前端工程师
 - 记录成长 记录生活
-- 永不止步
+- 向上生长
 
 [GitHub](https://github.com/NAZBIN)
 [Get Started](#main)

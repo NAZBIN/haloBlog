@@ -6,16 +6,15 @@
 
 个人认为函数声明式的调用比命令式更加简洁，举例来说：
 
-```
+```javascript
 //命令式
-let names:string[] = []
-for(let i=0;i<persons.length;i++){
-        names.push(person[i].name)
+let names: string[] = [];
+for (let i = 0; i < persons.length; i++) {
+  names.push(person[i].name);
 }
 
 //声明式
-let names = persons.map((item)=>item.name)
-
+let names = persons.map((item) => item.name);
 ```
 
 从上述例子我们可以看出来，明显函数调用声明式的方法更加简洁。此外对于没有副作用的函数，比如上述的 map 函数，完全可以不考虑函数内部是如何实现的，专注于编写业务代码。优化代码时，目光只需要集中在这些稳定坚固的函数内部即可。
@@ -32,45 +31,41 @@ According to the [State of Javascript 2020 Survey](https://2019.stateofjs.com/ot
 
 看一个例子：
 
-```
+```javascript
 let persons = [
-   {username: 'bob', age: 30, tags: ['work', 'boring']},
-   {username: 'jim', age: 25, tags: ['home', 'fun']},
-   {username: 'jane', age: 30, tags: ['vacation', 'fun']}
-]
-
+  { username: "bob", age: 30, tags: ["work", "boring"] },
+  { username: "jim", age: 25, tags: ["home", "fun"] },
+  { username: "jane", age: 30, tags: ["vacation", "fun"] },
+];
 ```
 
 我们需要从这个数组中找出 tags 包含 fun 的对象。如果用命令式：
 
-```
-let NAME = 'fun'
+```javascript
+let NAME = "fun";
 let person;
-for(let i=0;i<persons.length;i++){
-   let isFind = false
-   let arr = persons[i].tags;
-   for(let j = 0;j<arr.length;j++){
-      if(arr[i] === NAME){
-         isFind = true
-         break;
-      }
-   }
-   if(isFind){
-      person = person[i]
+for (let i = 0; i < persons.length; i++) {
+  let isFind = false;
+  let arr = persons[i].tags;
+  for (let j = 0; j < arr.length; j++) {
+    if (arr[i] === NAME) {
+      isFind = true;
       break;
-   }
-
+    }
+  }
+  if (isFind) {
+    person = person[i];
+    break;
+  }
 }
-
 ```
 
 我们用函数式的写法可以简化:
 
-```
-  let person = _.filter(persons, (person) => person.tags.includes('fun'))
+```javascript
+let person = _.filter(persons, (person) => person.tags.includes("fun"));
 
-复制代码
-
+复制代码;
 ```
 
 很明显减少了代码量且更加容易理解含义。
@@ -85,7 +80,7 @@ The isEqual method performs a deep comparison between two values.
 
 Syntax:
 
-```
+```javascript
 _.isEqual(value, other)
 Take a look at the below code:
 const obj1 = {
@@ -130,7 +125,7 @@ The isEmpty method checks if value is an empty object, collection, map, or set.
 
 Syntax:
 
-```
+```javascript
 _.isEmpty(value)
 Take a look at the below code:
 const obj1 = { name: 'David' };
@@ -168,7 +163,7 @@ The get method gets the value at the path of an object. If the resolved value is
 
 Syntax:
 
-```
+```javascript
 _.get(object, path, [defaultValue])
 Take a look at the below code:
 const user = {
@@ -208,19 +203,18 @@ console.log(_.get(user, 'name.middlename', '')); // ''
 
 The great thing about lodash's get method is that, if the location property does not exist in the user object, directly accessing it as user.location.timezone will throw an error but If lodash's get method is used, it will not throw an error but will return the default value.
 
-```
+```javascript
 const user = {
-      "gender": "male",
-      "name": {
-        "title": "mr",
-        "first": "brad",
-        "last": "gibson"
-      }
+  gender: "male",
+  name: {
+    title: "mr",
+    first: "brad",
+    last: "gibson",
+  },
 };
 // This will work and will return the default value specified
-console.log('timezone:',_.get(user, 'user.location.timezone', '')); //
-console.log('timezone:',user.location.timezone);//error
-
+console.log("timezone:", _.get(user, "user.location.timezone", "")); //
+console.log("timezone:", user.location.timezone); //error
 ```
 
 4\. **sortBy:**
@@ -229,24 +223,28 @@ The sortBy method creates an array of elements, sorted in ascending order by the
 
 Syntax:
 
-```
-_.sortBy(collection, [iteratees=[_.identity]])
-
+```javascript
+_.sortBy(collection, [(iteratees = [_.identity])]);
 ```
 
 Take a look at the below code:
 
-```
+```javascript
 const users = [
-  { 'user': 'fred',   'age': 48 },
-  { 'user': 'barney', 'age': 36 },
-  { 'user': 'fred',   'age': 40 },
-  { 'user': 'barney', 'age': 34 }
+  { user: "fred", age: 48 },
+  { user: "barney", age: 36 },
+  { user: "fred", age: 40 },
+  { user: "barney", age: 34 },
 ];
 
 //sort users by age
-console.log(_.sortBy(users, [function(user) { return user.age }])); // output: [{'user':'barney','age':34},{'user':'barney','age':36},{'user':'fred','age':40},{'user':'fred','age':48}]
-
+console.log(
+  _.sortBy(users, [
+    function (user) {
+      return user.age;
+    },
+  ])
+); // output: [{'user':'barney','age':34},{'user':'barney','age':36},{'user':'fred','age':40},{'user':'fred','age':48}]
 ```
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="lodash sortBy Demo" src="https://codepen.io/myogeshchavan97/embed/wvBOKYM?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -262,27 +260,25 @@ The orderBy method is similar to sortBy but it allows us to specify the descendi
 
 Syntax:
 
-```
-_.orderBy(collection, [iteratees=[_.identity]], [orders])
-
+```javascript
+_.orderBy(collection, [(iteratees = [_.identity])], [orders]);
 ```
 
 Take a look at the below code:
 
-```
+```javascript
 const users = [
-  { 'user': 'fred',   'age': 48 },
-  { 'user': 'barney', 'age': 36 },
-  { 'user': 'fred',   'age': 40 },
-  { 'user': 'barney', 'age': 34 }
+  { user: "fred", age: 48 },
+  { user: "barney", age: 36 },
+  { user: "fred", age: 40 },
+  { user: "barney", age: 34 },
 ];
 
 // sort by user in descending order
-console.log(_.orderBy(users, ['user'], ['desc']));
+console.log(_.orderBy(users, ["user"], ["desc"]));
 
 // sort by user in ascending order and age by descending order
-console.log(_.orderBy(users, ['user', 'age'], ['asc', 'desc']));
-
+console.log(_.orderBy(users, ["user", "age"], ["asc", "desc"]));
 ```
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="lodash orderBy Demo" src="https://codepen.io/myogeshchavan97/embed/oNgVYwZ?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -302,9 +298,8 @@ Syntax:
 
 Example:
 
-```
+```javascript
 console.log(_.union([1], [1, 2, 3], [-1, 0, 4], [2, 2, 3])); // [1, 2, 3, -1, 0, 4]
-
 ```
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="lodash union Demo" src="https://codepen.io/myogeshchavan97/embed/PowLbaB?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -320,19 +315,18 @@ The cloneDeep method returns a clone/copy of an object recursively. This is very
 
 Syntax:
 
-```
-_.cloneDeep(value)
-
+```javascript
+_.cloneDeep(value);
 ```
 
 Example:
 
-```
+```javascript
 const obj = {
   name: {
     title: "Ms",
     first: "Hannah",
-    last: "Ennis"
+    last: "Ennis",
   },
   location: {
     city: "Flatrock",
@@ -341,17 +335,17 @@ const obj = {
     postcode: "P1X 7D3",
     coordinates: {
       latitude: "-62.3907",
-      longitude: "37.8088"
+      longitude: "37.8088",
     },
     timezone: {
       offset: "+5:30",
-      description: "Bombay, Calcutta, Madras, New Delhi"
-    }
-  }
+      description: "Bombay, Calcutta, Madras, New Delhi",
+    },
+  },
 };
-const clone = _.cloneDeep(obj);console.log(obj.name === clone.name); // false
+const clone = _.cloneDeep(obj);
+console.log(obj.name === clone.name); // false
 console.log(clone === obj); // false
-
 ```
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="lodash cloneDeep Demo" src="https://codepen.io/myogeshchavan97/embed/vYyqjxg?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -369,9 +363,8 @@ The debounce method allows us to call a function after some milliseconds have pa
 
 Syntax:
 
-```
-_.debounce(func, [wait=0], [options={}])
-
+```javascript
+_.debounce(func, [(wait = 0)], [(options = {})]);
 ```
 
 **Note: the debounce method returns a function that we invoke to make subsequent calls.**
@@ -398,9 +391,8 @@ To fix this we can use debouncing where we only make an API request after 300 mi
 
 In the above code, the debounce method returns a function which we're storing in debFunction variable
 
-```
+```javascript
 const debFunction = _.debounce(onSearchText, 1000);
-
 ```
 
 Then for every key change event, we're calling the function stored in debFunction variable after 300 milliseconds once the user has stopped typing. Calling debFunction, internally, calls the onSearchText function where we're actually making an API call.
