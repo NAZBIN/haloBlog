@@ -2,7 +2,7 @@
 
 在项目开发中，有些容易被忽略的小问题带来项目后期的胶水代码。
 
-本文总结一些项目开发中 css 的 10 个小技巧。
+本文总结一些项目开发中 css 的一些技巧。
 
 ### **1、使用相对单位**
 
@@ -24,8 +24,19 @@ em（font size of the element）：相对于父元素
 
 % ：相对于父元素
 
-```
+```css
 /* 不提倡 */
+.wrap {
+  font-size: 14px;
+  margin: 10px;
+  line-height: 24px;
+}
+/* 建议 */
+.wrap {
+  font-size: 1.2rem;
+  margin: 0.5rem;
+  line-height: 1.6em;
+}
 ```
 
 ### **2、代码复用**
@@ -36,8 +47,24 @@ em（font size of the element）：相对于父元素
 
 当然需要提高代码复用，还是需要一定的 CSS 的基础，来设计好代码结构，如下：
 
-```
+```css
 /* 不提倡 */
+.container {
+  background-color: #efefef;
+  border-radius: 0.5rem;
+}
+
+.sidebar {
+  background-color: #efefef;
+  border-radius: 0.5rem;
+}
+
+/* 建议 */
+.container,
+.sidebar {
+  background-color: #efefef;
+  border-radius: 0.5rem;
+}
 ```
 
 ### **3、CSS 重置**
@@ -48,8 +75,17 @@ em（font size of the element）：相对于父元素
 
 像这样：
 
-```
+```css
 * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+ul,
+li {
+  list-style: none;
+}
 ```
 
 > 不过这些问题现在基本都被框架解决了，对于初学者建议可以模仿但不建议一开始就上框架。
@@ -60,8 +96,16 @@ em（font size of the element）：相对于父元素
 
 为什么呢？因为当使用像 red 这样的颜色名称时，在不同的浏览器或者设备中显示会有所不同。
 
-```
+```css
 /* 不提倡 */
+.container {
+  background-color: red;
+}
+
+/* 建议 */
+.container {
+  background-color: #ff0000;
+}
 ```
 
 ### **5、使用简写属性**
@@ -76,8 +120,18 @@ background、font、 margin、padding、 border、 transition、 transform�
 
 rotate、scale、background-color、background-image、background-position、padding-left、padding-right、padding-top、padding-bottom、margin-left、margin-top、margin-right、margin-bottom、border-top、 border-right、 border-bottom、 border-left、 border-width、 border-color、 border-style、
 
-```
+```css
 /* 不提倡 */
+.container {
+  background-image: url(bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 建议 */
+.container {
+  background: url(bg.png) no-repeat center;
+}
 ```
 
 ### **6、文本截取**
@@ -90,34 +144,59 @@ rotate、scale、background-color、background-image、background-position、pad
 
 元素必须是 block 或 inline-block，如果溢出被隐藏，则文本溢出不起作用，并且元素必须具有定义的宽度或最大宽度集。
 
-```
+```css
 p {
+  display: inline-block;
+  max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 ```
 
 #### **多行截取**
 
-```
+```css
 p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 需要显示的行数 */
+  overflow: hidden;
+}
 ```
 
 ### **7、垂直居中**
 
 垂直居中是一个很常见的需求，有很多实现方式，在伸缩容器内的任何东西垂直居中：
 
-```
+```css
 .flex-vertically-center {
+  display: flex;
+  align-items: center;
+}
 ```
 
 inline、inline-block、table-cell 块垂直对齐：
 
-```
+```css
 img {
+  /* 只对block有效 */
+  display: inline-block;
+  vertical-align: middle;
+}
 ```
 
 相对容器中垂直居中的绝对元素，下面代码是.sub-container 在.container 垂直居中：
 
-```
+```css
 .container {
+  position: relative;
+}
+.sub-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
 ```
 
 ### **8、水平居中**
@@ -126,78 +205,38 @@ img {
 
 块居中
 
-```
-.block-element {
+```css
+.container {
+  text-align: center;
+}
 ```
 
 内联或内联块文本居中
 
-```
+```css
 .container {
+  text-align: center;
+}
 ```
 
 在相对容器内水平居中绝对元素：
 
-```
+```css
 .container {
+  position: relative;
+}
+.sub-container {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+}
 ```
 
 flex 容器内的任何内容水平居中：
 
-```
+```css
 .flex-vertically-center {
+  display: flex;
+  justify-content: center;
+}
 ```
-
-### **9、设置下一个或上一个兄弟元素样式**
-
-对元素前面和后面的元素进行样式设置，在项目开发中很有用。例如 10 个按钮，当前按钮下一个及下一个的兄弟元素设置不同的颜色。
-
-html 代码如下：
-
-```
-<div>
-```
-
-css 代码：
-
-```
-.current ~ button {
-```
-
-效果如下：
-
-![图片]('/../../_media/css1.jpg)
-
-接下来设置当前按钮前面样式，css 代码如下：
-
-```
-button {
-```
-
-### **10、宽高比**
-
-如果想让盒子容器有一定的宽高比，如视频播放器尺寸，可以用几种方法来实现，其中有一种方法最直观。可以使用 calc 函数设置顶部填充  (height \* width) / 100%。
-
-如下，创建一个 720px 宽的 16 x 9 矩形：
-
-html 代码：
-
-```
-<div class="container">
-```
-
-css 代码：
-
-```
-.container {
-```
-
-还可以使用 after 伪元素来创建比例大小。
-
-```
-.box::after {
-```
-
-上面的方案会导致里面所有的元素都必须向上移动或需要使用绝对定位。不过好消息是，CSS 增加了 aspect-ratio 属性。
-
-aspect-ratio 为 box 容器规定了一个期待的纵横比，这个纵横比可以用来计算自动尺寸以及为其他布局函数服务。
