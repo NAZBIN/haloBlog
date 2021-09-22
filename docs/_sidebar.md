@@ -6,7 +6,7 @@
   - [React Hooks 最佳实践](/_mds/react.md "React Hooks")
   - [lodash.js 函数式编程](/_mds/lodash.md "lodash")
   - [CSS 技巧](/_mds/css.md "CSS 技巧")
-  - [JS 面试题](/_mds/js_interivew.md "JS 面试题")
+  - [JS 面试题](/_mds/js_interview.md "JS 面试题")
   - [JS 输出题目训练纠错集](/_mds/js_output.md "JS output")
 
 - **读书笔记**
