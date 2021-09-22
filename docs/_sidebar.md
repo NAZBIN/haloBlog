@@ -6,8 +6,8 @@
   - [React Hooks 最佳实践](/_mds/react.md "React Hooks")
   - [lodash.js 函数式编程](/_mds/lodash.md "lodash")
   - [CSS 技巧](/_mds/css.md "CSS 技巧")
-  - [单点登录](/_mds/singleFocus.md "单点登录")
-  - [FDS 存储](/_mds/fds.md "FDS存储服务")
+  - [JS 面试题](/_mds/js_interivew.md "JS 面试题")
+  - [JS 输出题目训练纠错集](/_mds/js_output.md "JS output")
 
 - **读书笔记**
   - [Money Puppies](/_books/puppyMoney.md "puppyMoney")
