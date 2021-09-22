@@ -15,3 +15,4 @@
   - [止损：如何克服贪婪和恐惧](/_books/limitLose.md "止损：如何克服贪婪和恐惧")
   - [富爸爸 21 世纪的生意](/_books/richdad.md "richdad")
   - [AQ 逆商](/_books/aQ.md "AQ 逆商")
+  - [一生的财富](/_books/洛克菲勒一生的财富.md "洛克菲勒")
