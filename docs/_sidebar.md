@@ -10,7 +10,7 @@
   - [JS 输出题目训练纠错集](/_mds/js_output.md "JS output")
   - [React Hooks 基础与实战总结](/_mds/react.md "React Hooks基础实战总结")
   - [Service Worker](/_mds/serviceWorker.md "Service Worker 前端缓存")
-  - [React 路由](/_mds/route.md "react route")
+  - [React 路由](/_mds/reactHooks.md "react route")
   - [Webpack 打包部署](/_mds/webpack.md "Webpack 打包部署")
 
 - **读书笔记**
