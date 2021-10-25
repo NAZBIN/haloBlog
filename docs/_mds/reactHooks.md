@@ -1,3 +1,5 @@
+# React Hooks 基础与实战总结
+
 ## React 基础篇整理
 
 - 虚拟DOM AND JSX
@@ -44,7 +46,7 @@
 需求：点击按钮，获取用户列表并显示在页面上
 分析：数据状态、Loading状态、请求出错的处理
 
-```javaSCript
+```javaScript
 
 import React from "react";
 
@@ -100,7 +102,7 @@ export default function UserList() {
 
 注意：
 1. React对比依赖为浅比较，不能将依赖设置为数组/对象。
-2. hooks只能自函数组件的顶级作用域使用/只能在函数组件/其它hooks中使用
+2. hooks只能在函数组件的顶级作用域使用/只能在函数组件/其它hooks中使用
   
 
 useEffect进行数据请求的例子
@@ -134,7 +136,7 @@ function BlogView(id){
 ## useRef
 - 在组件的多次渲染之间共享数据值
 - 看作是是在函数组件之外创建的一个共享空间
-- 应用：比如计时器的开始和停止/保存某个Dom节点的引用w
+- 应用：比如计时器的开始和停止/保存某个Dom节点的引用
 - 使用useRef保存的数据一般与UI的渲染无关
 示例
 ```js
